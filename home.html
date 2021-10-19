@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div id="counter-container">
+        <h1>Xavers Geburtstag</h1>
+        <p>Hallo Xaver, dies ist sehr wichtig. Wenn du diese Website nicht um 0:00 an deinem Geburtstag (falls du es
+            vergessen hast am 20.10.) ansiehst, werden schlimme Dinge passieren.</p>
+        <p>Das beinhaltet das Gefressenwerden aller Otter, das Explodieren des Saturn, Pizzas werden nur noch ECKIG OHNE
+            MOZZARELLA verkauft und der Cyberspace wird gehackt.</p>
+        <p>Weiterhin wird die vernachlässigte vierte Dimension uns alle chippen und alle Menschen werden sich
+            carnetarisch
+            ernähren.</p>
+        <p id="timer"></p>
+    </div>
+    <div id="rickroll" style="display: none;">
+        <h1>Alles Gute zum Gebrtstag lieber Xaver!!!!</h1>
+        <iframe width="1280" height="720" src="https://www.youtube.com/embed/xvFZjo5PgG0?controls=0"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        <div>Dominik, Philipp, Ole</div>
+
+    </div>
+    <script>
+        const timer = document.getElementById('timer');
+        const birthday = new Date(2020, 10, 20, 0, 0, 0, 0);
+        const interval = window.setInterval(() => {
+            const now = new Date();
+            const diff = birthday.getTime() - now.getTime();
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                timer.innerHTML = `${hours} Stunden, ${minutes} Minuten und ${seconds} Sekunden bis zum Geburtstag`;
+            } else {
+                document.getElementById('counter-container').remove();
+                document.getElementById('rickroll').style.display = 'block';
+                window.clearInterval(interval);
+                var state = 0;
+                window.setInterval(() => {
+                    document.body.style.filter = "invert(" + state + ")"
+                    state = state == 1 ? 0 : 1;
+                }, 100);
+            }
+        }, 1000);
+    </script>
+    <style>
+        body {
+            background-color: aqua;
+            height: 100vh;
+        }
+
+        #rickroll {
+            height: 100%;
+            background-color: chartreuse;
+        }
+    </style>
+</body>
+
+</html>
