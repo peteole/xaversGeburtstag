@@ -30,7 +30,7 @@
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
-        <div>Dominik, Philipp, Ole</div>
+        <p id="greeter-names"></p>
 
     </div>
     <script>
@@ -39,9 +39,11 @@
         const year = params.get('year');
         const month = params.get('month');
         const day = params.get('day');
+        const greeters = params.getAll('greeters');
         document.getElementById('title').innerText = `Geburtstag von ${name}`;
         document.getElementById('greeting').innerText = `Lieber ${name},`;
         document.getElementById('final-wish').innerText = `Alles Gute zum Geburtstag lieber ${name}!!!!`;
+        document.getElementById('greeter-names').innerText = `${greeters.join(', ')}`;
         const timer = document.getElementById('timer');
         const birthday = new Date(year, parseInt(month) - 1, day, 0, 0, 0, 0);
         const interval = window.setInterval(() => {
