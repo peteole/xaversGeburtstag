@@ -14,8 +14,7 @@
     <div id="counter-container">
         <h1 id="title"></h1>
         <p id="greeting"></p>
-        <p>dies ist sehr wichtig. Wenn du diese Website nicht um 0:00 an deinem Geburtstag (falls du es
-            vergessen hast am 20.10.) ansiehst, werden schlimme Dinge passieren.</p>
+        <p id="first-paragraph"></p>
         <p>Das beinhaltet das Gefressenwerden aller Otter, das Explodieren des Saturn, Pizzas werden nur noch ECKIG OHNE
             MOZZARELLA verkauft und der Cyberspace wird gehackt.</p>
         <p>Weiterhin wird die vernachlässigte vierte Dimension uns alle chippen und alle Menschen werden sich
@@ -44,6 +43,8 @@
         document.getElementById('greeting').innerText = `Lieber ${name},`;
         document.getElementById('final-wish').innerText = `Alles Gute zum Geburtstag lieber ${name}!!!!`;
         document.getElementById('greeter-names').innerText = `${greeters.join(', ')}`;
+        document.getElementById('first-paragraph').innerText = `dies ist sehr wichtig. Wenn du diese Website nicht um 0:00 an deinem Geburtstag (falls du es
+            vergessen hast am ${day}.${month}.) ansiehst, werden schlimme Dinge passieren.`;
         const timer = document.getElementById('timer');
         const birthday = new Date(year, parseInt(month) - 1, day, 0, 0, 0, 0);
         const interval = window.setInterval(() => {
