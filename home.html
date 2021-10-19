@@ -12,8 +12,9 @@
 
 <body>
     <div id="counter-container">
-        <h1>Xavers Geburtstag</h1>
-        <p>Hallo Xaver, dies ist sehr wichtig. Wenn du diese Website nicht um 0:00 an deinem Geburtstag (falls du es
+        <h1 id="title"></h1>
+        <p id="greeting"></p>
+        <p>dies ist sehr wichtig. Wenn du diese Website nicht um 0:00 an deinem Geburtstag (falls du es
             vergessen hast am 20.10.) ansiehst, werden schlimme Dinge passieren.</p>
         <p>Das beinhaltet das Gefressenwerden aller Otter, das Explodieren des Saturn, Pizzas werden nur noch ECKIG OHNE
             MOZZARELLA verkauft und der Cyberspace wird gehackt.</p>
@@ -33,8 +34,15 @@
 
     </div>
     <script>
+        const params = (new URL(document.location)).searchParams;
+        const name = params.get('name');
+        const year = params.get('year');
+        const month = params.get('month');
+        const day = params.get('day');
+        document.getElementById('title').innerText = `Geburtstag von ${name}`;
+        document.getElementById('greeting').innerText = `Lieber ${name},`;
         const timer = document.getElementById('timer');
-        const birthday = new Date(2021, 10, 20, 0, 0, 0, 0);
+        const birthday = new Date(year, parseInt(month) - 1, day, 0, 0, 0, 0);
         const interval = window.setInterval(() => {
             const now = new Date();
             const diff = birthday.getTime() - now.getTime();
@@ -43,7 +51,7 @@
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                timer.innerHTML = `${hours} Stunden, ${minutes} Minuten und ${seconds} Sekunden bis zum Geburtstag`;
+                timer.innerHTML = `${days} Tage, ${hours} Stunden, ${minutes} Minuten und ${seconds} Sekunden bis zum Geburtstag`;
             } else {
                 document.getElementById('counter-container').remove();
                 document.getElementById('rickroll').style.display = 'block';
